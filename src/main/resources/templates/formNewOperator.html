@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
+
+    <title>Operator Web Application</title>
+
+    <style>
+body {
+	padding-top: 50px;
+}
+
+.special {
+	padding-top: 50px;
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href=".">Système de gestion des opérateurs</a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container special">
+
+    <h2 class="h2">Ajout d'un nouvel opérateur</h2>
+    <div>
+        <form method="post"
+              th:action="@{/saveOperator}" th:object="${operator}">
+            <div class="form-group">
+                <label for="nameInput">Nom</label>
+                <input
+                        type="text" th:field="*{name}" class="form-control" id="nameInput"
+                        aria-describedby="nameHelp" placeholder="Saisir le nom de l'opérateur"> <small
+                    id="nameHelp" class="form-text text-muted">Merci d'écrire le nom de l'opérateur.</small>
+            </div>
+            <div class="form-group">
+                <label for="availableInput">Disponibilité</label>*
+                <div class="form-group">
+                    <input type="radio" th:field="*{available}" th:value="true" id="choix1"/>
+                    <label for="choix1"> Disponible</label><br/>
+                    <input type="radio" th:field="*{available}" th:value="false"  id="choix2"/>
+                    <label for="choix2"> Non disponible</label>
+                </div>
+                <small id="bedsAvailableHelp" class="form-text text-muted">Merci d'indiquer la disponibilité de l'opérateur (true/false)'.</small>
+<!--
+                <input
+                        type="text" th:field="*{available}" class="form-control" id="availableInput"
+                        aria-describedby="availableHelp" placeholder="Saisir la dipsonibilité de l'opérateur POUET"> <small
+                    id="bedsAvailableHelp" class="form-text text-muted">Merci d'écrire la disponibilité de l'opérateur (true/false)'.</small>
+-->
+            </div>
+            <button type="submit" class="btn btn-primary">Créer</button>
+        </form>
+    </div>
+
+</div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>
