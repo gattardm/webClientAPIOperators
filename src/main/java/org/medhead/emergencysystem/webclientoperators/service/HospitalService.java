@@ -58,6 +58,15 @@ public class HospitalService {
         return hospital;
     }
 
+    public Hospital modifyBedsAvailable(Hospital hospital) {
+        System.out.println("\tUn lit est attribué à l'incident");
+        int bedsRemaining = Integer.parseInt(hospital.getBedsAvailable());
+        bedsRemaining --;
+        hospital.setBedsAvailable(Integer.toString(bedsRemaining));
+        this.saveHospital(hospital);
+        return hospital;
+    }
+
     public Hospital attributedOperator(Hospital hospital, Operator operator) {
         System.out.println("\tL'incident '" + operator.getIncidentId() + "' a été traité par '" + operator.getName() + "'");
         hospital.setAttributedBy(operator.getId().toString());

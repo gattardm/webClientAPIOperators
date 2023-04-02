@@ -47,6 +47,7 @@ public class OperatorController {
 
                 //Attribution de l'incident à l'hopital adéquat par l'opérateur
                 hospitalService.attributedIncident(hospital, incident);
+                hospitalService.modifyBedsAvailable(hospital);
                 hospitalService.attributedOperator(hospital, operator);
                 operatorService.attributedHospital(hospital, operator);
 
